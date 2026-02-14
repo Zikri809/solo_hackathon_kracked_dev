@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Cloud White #F9FAFB */
+  --background: #F9FAFB;
+  /* Monsoon Gray #374151 */
+  --foreground: #374151;
+
+  /* Card White */
+  --card: #FFFFFF;
+  --card-foreground: #374151;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #374151;
+
+  /* Deep Purple #581C87 */
+  --primary: #581C87;
+  --primary-foreground: #F9FAFB;
+
+  /* Transit Blue #1E40AF */
+  --secondary: #1E40AF;
+  --secondary-foreground: #F9FAFB;
+
+  /* Gray-100 */
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+
+  /* Electric Teal #0D9488 */
+  --accent: #0D9488;
+  --accent-foreground: #F9FAFB;
+
+  /* Sunset Orange #EA580C */
+  --destructive: #EA580C;
+  --destructive-foreground: #F9FAFB;
+
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+
+  /* Deep Purple Ring */
+  --ring: #581C87;
+
+  --chart-1: #581C87;
+  --chart-2: #1E40AF;
+  --chart-3: #0D9488;
+  --chart-4: #EA580C;
+  --chart-5: #374151;
+
+  --sidebar: #F9FAFB;
+  --sidebar-foreground: #374151;
+  --sidebar-primary: #581C87;
+  --sidebar-primary-foreground: #F9FAFB;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #374151;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #581C87;
+}
+
+.dark {
+  /* Night Sky #111827 */
+  --background: #111827;
+  /* Cloud White #F9FAFB */
+  --foreground: #F9FAFB;
+
+  --card: #1F2937;
+  --card-foreground: #F9FAFB;
+
+  --popover: #1F2937;
+  --popover-foreground: #F9FAFB;
+
+  /* Deep Purple Lightened? Or same? Keeping brand consistency */
+  --primary: #7C3AED;
+  --primary-foreground: #F9FAFB;
+
+  /* Transit Blue */
+  --secondary: #1E40AF;
+  --secondary-foreground: #F9FAFB;
+
+  --muted: #1F2937;
+  --muted-foreground: #9CA3AF;
+
+  /* Neon Highlight #FBBF24 for dark mode interactive per PRD? 
+     PRD says "Neon Highlight: Interactive elements in dark mode".
+     Maybe mapped to accent? */
+  --accent: #FBBF24;
+  --accent-foreground: #111827;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #F9FAFB;
+
+  --border: #374151;
+  --input: #374151;
+  --ring: #7C3AED;
+
+  --chart-1: #7C3AED;
+  --chart-2: #3B82F6;
+  --chart-3: #14B8A6;
+  --chart-4: #F97316;
+  --chart-5: #9CA3AF;
+
+  --sidebar: #111827;
+  --sidebar-foreground: #F9FAFB;
+  --sidebar-primary: #7C3AED;
+  --sidebar-primary-foreground: #F9FAFB;
+  --sidebar-accent: #1F2937;
+  --sidebar-accent-foreground: #F9FAFB;
+  --sidebar-border: #374151;
+  --sidebar-ring: #7C3AED;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
