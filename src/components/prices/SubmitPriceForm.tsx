@@ -28,28 +28,28 @@ import { toast } from "sonner";
 import { MALAYSIA_LOCATIONS, State } from "@/lib/locations";
 
 const formSchema = z.object({
-    product_name: z.string().min(2, {
-        message: "Product name must be at least 2 characters.",
-    }),
-    price: z.coerce.number().positive({
-        message: "Price must be a positive number.",
-    }),
+    product_name: z.string().min(2, "Product name must be at least 2 characters."),
+    price: z.number().positive("Price must be a positive number."),
     unit: z.enum(["kg", "g", "l", "ml", "pcs"]),
-    store_name: z.string().min(2, {
-        message: "Store name must be at least 2 characters.",
-    }),
-    state: z.string().min(1, {
-        message: "Please select a state.",
-    }),
-    city: z.string().min(1, {
-        message: "Please select a city.",
-    }),
-    location: z.string().min(2, {
-        message: "Location details must be at least 2 characters.",
-    }),
-    lat: z.number().nullable().optional(),
-    lng: z.number().nullable().optional(),
+    store_name: z.string().min(2, "Store name must be at least 2 characters."),
+    state: z.string().min(1, "Please select a state."),
+    city: z.string().min(1, "Please select a city."),
+    location: z.string().min(2, "Location details must be at least 2 characters."),
+    lat: z.number({ message: "Please capture your location using the map pin icon." }),
+    lng: z.number({ message: "Please capture your location using the map pin icon." }),
 });
+
+interface FormValues {
+    product_name: string;
+    price: number;
+    unit: "kg" | "g" | "l" | "ml" | "pcs";
+    store_name: string;
+    state: string;
+    city: string;
+    location: string;
+    lat: number;
+    lng: number;
+}
 
 interface SubmitPriceFormProps {
     onSuccess?: () => void;
@@ -58,18 +58,18 @@ interface SubmitPriceFormProps {
 export function SubmitPriceForm({ onSuccess }: SubmitPriceFormProps) {
     const mutation = useSubmitPrice();
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const form = useForm<FormValues>({
         resolver: zodResolver(formSchema) as any,
         defaultValues: {
             product_name: "",
             price: 0,
+            unit: "kg",
             store_name: "",
             location: "",
             state: "",
             city: "",
-            lat: null,
-            lng: null,
+            lat: undefined,
+            lng: undefined,
         },
     });
 
@@ -108,7 +108,7 @@ export function SubmitPriceForm({ onSuccess }: SubmitPriceFormProps) {
         );
     };
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(values: FormValues) {
         mutation.mutate(
             {
                 product_name: values.product_name,
@@ -118,8 +118,8 @@ export function SubmitPriceForm({ onSuccess }: SubmitPriceFormProps) {
                 state: values.state,
                 city: values.city,
                 location: values.location,
-                lat: values.lat,
-                lng: values.lng,
+                lat: values.lat!,
+                lng: values.lng!,
             },
             {
                 onSuccess: () => {
@@ -130,9 +130,15 @@ export function SubmitPriceForm({ onSuccess }: SubmitPriceFormProps) {
         );
     }
 
+    const onError = () => {
+        if (form.formState.errors.lat || form.formState.errors.lng) {
+            toast.error("Please capture your location using the map pin icon before submitting.");
+        }
+    };
+
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-4">
                 <FormField
                     control={form.control}
                     name="product_name"

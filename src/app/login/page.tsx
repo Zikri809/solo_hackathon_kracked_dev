@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import LoginForm from '@/components/auth/login-form'
+import UnifiedAuthForm from '@/components/auth/unified-auth-form'
 import { useAuth } from '@/components/auth/auth-provider'
 
 export default function LoginPage() {
@@ -26,7 +26,7 @@ export default function LoginPage() {
     return (
         <div className="flex min-h-screen items-center justify-center p-4 bg-muted/30">
             <div className="w-full max-w-md">
-                <LoginForm />
+                <UnifiedAuthForm />
             </div>
         </div>
     )
