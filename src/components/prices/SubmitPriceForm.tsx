@@ -29,7 +29,7 @@ import { MALAYSIA_LOCATIONS, State } from "@/lib/locations";
 
 const formSchema = z.object({
     product_name: z.string().min(2, "Product name must be at least 2 characters."),
-    price: z.number().positive("Price must be a positive number."),
+    price: z.coerce.number().positive("Price must be a positive number."),
     unit: z.enum(["kg", "g", "l", "ml", "pcs"]),
     store_name: z.string().min(2, "Store name must be at least 2 characters."),
     state: z.string().min(1, "Please select a state."),
