@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 KomunitiKita
 
-## Getting Started
+**Digital Community Utility Platform for Cost of Living Savings**
 
-First, run the development server:
+Built for **Krackathon Q1 2026** • 3-Hour Challenge
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Project Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**KomunitiKita** is a crowdsourced price comparison platform designed for Malaysians to tackle the rising cost of living. By sharing real-time grocery prices from local supermarkets and community food banks, households can make informed decisions and save significantly on daily essentials.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔴 The Problem
+Malaysians struggle to find the cheapest grocery prices across different supermarkets and community food banks, often leading to overspending on daily items like eggs, rice, and cooking oil.
 
-## Learn More
+### ✅ The Solution
+A community-driven platform where transparency helps families reduce grocery spending by **15-30%** and connects them with affordable food resources.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Key Features (MVP)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **📝 Price Submission**: Real-time crowd-sourced entry for products, prices, and locations.
+- **🔍 Smart Search & Filter**: Find the cheapest essentials by product name, store, or area.
+- **🏷️ Lowest Price Badges**: Automatically highlight the best deals in the community.
+- **💰 Savings Calculator**: See the tangible impact of community-shared data on your wallet.
+- **🔐 Secure Auth**: Simple Magic Link authentication via Supabase.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | [Next.js 14+](https://nextjs.org/) (App Router) |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) |
+| **Backend** | [Supabase](https://supabase.com/) (Auth, Database, Real-time) |
+| **State Management** | [TanStack Query v5](https://tanstack.com/query/latest) |
+| **Deployment** | [Vercel](https://vercel.com/) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- Supabase Account
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repo-url>
+   cd solo_hackathon_kracked_dev
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup:**
+   Create a `.env` file in the root and add your Supabase credentials:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to see the result.
+
+---
+
+## 📊 Database Schema
+
+The project uses a simple yet effective Supabase schema:
+
+- **`price_entries`**: Stores product names, categories, prices, units, store names, and locations.
+- **`user_profiles`**: Tracks user contributions and display names.
+
+---
+
+## 🗺️ Roadmap (Future Enhancements)
+
+- [ ] **Receipt OCR**: Automatically extract prices from supermarket receipts.
+- [ ] **Map Integration**: Visualizing price "heatmaps" and nearby food banks.
+- [ ] **Price Drop Alerts**: Notifications for saved items.
+- [ ] **Gamification**: Badges and rewards for top community contributors.
+
+---
+
+## 👨‍💻 Contributing
+
+This project was built as part of a solo hackathon. Feedback and suggestions are welcome!
+
+---
+
+*Built with ❤️ for the Malaysian Community.*
